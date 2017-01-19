@@ -13,10 +13,11 @@ var outputEl = document.getElementById("output-target");
 var articleEl = document.getElementsByClassName("article-section");
 console.log("articleEl",articleEl);
 
+//Ask: does the order matter? When will function be called?
 function handleSectionClick(MouseEvent) {
   console.log(MouseEvent);
   var elementText = MouseEvent.target.innerHTML;
-  outputEl.innerHTML = "You clicked on the " + elementText + " section";
+  outputEl.innerHTML = "You clicked on the " + elementText;
 }
 
 for (var i = 0; i < articleEl.length; i++) {
@@ -32,11 +33,11 @@ for (var i = 0; i < articleEl.length; i++) {
 var header = document.getElementById("page-header");
 
 function handleHeaderMouseOver(event) {
-  outputEl.innerHTML ="You moved your mouse over me";
+  outputEl.innerHTML ="The force is strong with this one";
 }
 
 function handleHeaderMouseOut(event) {
-  outputEl.innerHTML = "Why u leave me?";
+  outputEl.innerHTML = "Remember… the Force will be with you, always";
 }
 
 header.addEventListener("mouseover", handleHeaderMouseOver);
@@ -55,26 +56,27 @@ fieldEl.addEventListener("keyup", function (event) {
   outputEl.innerHTML = event.target.value;
 });
 
-var guineaPig = document.getElementById("guinea-pig");
+
+var obiwan = document.getElementById("obi-wan");
 
 document.getElementById("add-color")
   .addEventListener("click", function() {
-  guineaPig.classList.toggle("blue");
+  obiwan.classList.toggle("blue");
 });
 
 document.getElementById("make-large")
   .addEventListener("click", function() {
-  guineaPig.classList.toggle("large");
+  obiwan.classList.toggle("large");
 });
 
 document.getElementById("add-border")
   .addEventListener("click", function() {
-  guineaPig.classList.toggle("bordered");
+  obiwan.classList.toggle("bordered");
 });
 
 document.getElementById("add-rounding")
   .addEventListener("click", function() {
-  guineaPig.classList.toggle("rounded");
+  obiwan.classList.toggle("rounded");
 });
 
 
@@ -86,7 +88,7 @@ document.getElementById("add-rounding")
   conditional logic to handle the click event on many different
   elements in one function.
  */
-document.getElementById("card--1").addEventListener("click", function(event) {
+document.getElementById("wrapper").addEventListener("click", function(event) {
   console.log("target", event.target);
   console.log("currentTarget", event.currentTarget);
 
@@ -107,3 +109,40 @@ document.getElementById("card--1").addEventListener("click", function(event) {
     console.log("You clicked on the page-title element");
   }
 });
+
+// Looping through array and adding events doesn't work with innerHTML because
+// it removed previous items from the DOM before reinsering them.
+// This deletes the added event handlers. Here's an alternative
+var myArr = [
+"A long time ago in a galaxy far, far away…",
+"Use the force, Luke.",
+"The force is strong with this one.",
+"Do. Or do not. There is no try.",
+"Fear is the path to the dark side.",
+"Someday I will be the most powerful Jedi ever.",
+"You were the chosen one!"
+]
+myArr.forEach(function(quote, index) {
+  let phraseString = `<div id="quote--${index}">
+                        <h3>"${quote}" - Star Wars</h3>
+                      </div>`
+  let phraseDiv = document.createElement("div"); //<---Here's the key to adding the cards with the clicke event intact
+  phraseDiv.innerHTML = phraseString;
+  document.getElementById("stickItHere").appendChild(phraseDiv);
+  let phraseDOM = document.getElementById(`quote--${index}`);
+  phraseDOM.addEventListener("click", function() {
+    console.log("event", event);
+    event.currentTarget.classList.add("red");
+  });
+});
+
+
+/*
+A long time ago in a galaxy far, far away…
+Use the force, Luke.
+The force is strong with this one.
+Do. Or do not. There is no try.
+Fear is the path to the dark side.
+Someday I will be the most powerful Jedi ever.
+You were the chosen one! 
+*/
