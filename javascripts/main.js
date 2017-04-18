@@ -1,5 +1,5 @@
 var saywhat = document.getElementById("output");
-// outputEl
+
 /*
   You can get a reference to DOM elements and
   directly attach an event handler. In this
