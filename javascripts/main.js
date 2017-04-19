@@ -130,6 +130,7 @@ myArr.forEach(function(quote, index) {
   phraseDiv.innerHTML = phraseString;
   document.getElementById("stickItHere").appendChild(phraseDiv);
   let phraseDOM = document.getElementById(`quote--${index}`);
+  
   phraseDOM.addEventListener("click", function() {
     console.log("event", event);
     event.currentTarget.classList.add("red");
@@ -146,3 +147,26 @@ Fear is the path to the dark side.
 Someday I will be the most powerful Jedi ever.
 You were the chosen one! 
 */
+
+
+/* 
+  version 2 - one function many arrays
+*/
+
+var playerOne = [22, 34, 11, 90, 200];
+var playerTwo = [76, 56, 788, 902];
+
+
+function changeScores(item, index, whichArray){
+  whichArray[index] = item * 10;
+  
+}
+
+document.getElementById("change1").addEventListener("click", function(){
+  playerOne.forEach(changeScores);
+  console.log("playerOne:", playerOne);
+});
+document.getElementById("change2").addEventListener("click", function(){
+  playerTwo.forEach(changeScores);
+  console.log("playerTwo:", playerTwo);
+});
