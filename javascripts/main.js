@@ -1,4 +1,4 @@
-var outputEl = document.getElementById("output-target");
+var saywhat = document.getElementById("output");
 
 /*
   You can get a reference to DOM elements and
@@ -10,19 +10,23 @@ var outputEl = document.getElementById("output-target");
   function gets executed.
  */
 
-var articleEl = document.getElementsByClassName("article-section");
-console.log("articleEl",articleEl);
+//getElementsByClassName returns an HTML collection - similar to an array, but no the same
+var articleItems = document.getElementsByClassName("article-section");
+console.log("articleItems", articleItems);
 
 //Ask: does the order matter? When will function be called?
-function handleSectionClick(MouseEvent) {
+function handleClick(MouseEvent) {
   console.log(MouseEvent);
   var elementText = MouseEvent.target.innerHTML;
-  outputEl.innerHTML = "You clicked on the " + elementText;
+  saywhat.innerHTML = "You clicked on " + elementText;
 }
 
-for (var i = 0; i < articleEl.length; i++) {
-  articleEl.item(i).addEventListener("click", handleSectionClick);
+for (var i = 0; i < articleItems.length; i++) {
+  articleItems.item(i).addEventListener("click", handleClick);
 }
+
+
+
 
 /*
   Get a reference to the DOM element with an id of
@@ -33,11 +37,11 @@ for (var i = 0; i < articleEl.length; i++) {
 var header = document.getElementById("page-header");
 
 function handleHeaderMouseOver(event) {
-  outputEl.innerHTML ="The force is strong with this one";
+  saywhat.innerHTML ="The force is strong with this one";
 }
 
 function handleHeaderMouseOut(event) {
-  outputEl.innerHTML = "Remember… the Force will be with you, always";
+  saywhat.innerHTML = "Remember… the Force will be with you, always";
 }
 
 header.addEventListener("mouseover", handleHeaderMouseOver);
@@ -49,14 +53,18 @@ header.addEventListener("mouseout", handleHeaderMouseOut);
   in the addEventListener declaration instead of using a
   function reference
  */
-var fieldEl = document.getElementById("keypress-input");
 
-fieldEl.addEventListener("keyup", function (event) {
+var inputArea = document.getElementById("keypress-input");
+
+inputArea.addEventListener("keyup", function (event) {
   console.log("event",event);
-  outputEl.innerHTML = event.target.value;
+  saywhat.innerHTML = event.target.value;
 });
 
 
+/*
+  another version of anonymous function - change the styles
+*/
 var obiwan = document.getElementById("obi-wan");
 
 document.getElementById("add-color")
@@ -88,6 +96,8 @@ document.getElementById("add-rounding")
   conditional logic to handle the click event on many different
   elements in one function.
  */
+
+ // add list item to html page
 document.getElementById("wrapper").addEventListener("click", function(event) {
   console.log("target", event.target);
   console.log("currentTarget", event.currentTarget);
@@ -99,7 +109,7 @@ document.getElementById("wrapper").addEventListener("click", function(event) {
 
   // Handle the click event on any section
      // * Notice how when you click on a section, it executes
-       // this code, but *also* the code on line 17.
+       // this code, but *also* the code on above.
   if (event.target.className === "article-section") {
     console.log("You clicked on an `article-section` element");
   }
@@ -110,10 +120,14 @@ document.getElementById("wrapper").addEventListener("click", function(event) {
   }
 });
 
-// Looping through array and adding events doesn't work with innerHTML because
-// it removed previous items from the DOM before reinsering them.
-// This deletes the added event handlers. Here's an alternative
-var myArr = [
+/*  Looping through array and adding events doesn't work with innerHTML because
+    it removed previous items from the DOM before reinsering them.
+    This deletes the added event handlers. Here's an alternative
+*/
+
+//BE SURE TO ADD <div id="stickItHere"></div>
+
+var quotesArray = [
 "A long time ago in a galaxy far, far away…",
 "Use the force, Luke.",
 "The force is strong with this one.",
@@ -122,16 +136,18 @@ var myArr = [
 "Someday I will be the most powerful Jedi ever.",
 "You were the chosen one!"
 ]
-myArr.forEach(function(quote, index) {
-  let phraseString = `<div id="quote--${index}">
+
+
+quotesArray.forEach(function(quote, index) {
+  let quoteBlock = `<div id="quote--${index}">
                         <h3>"${quote}" - Star Wars</h3>
                       </div>`
-  let phraseDiv = document.createElement("div"); //<---Here's the key to adding the cards with the clicke event intact
-  phraseDiv.innerHTML = phraseString;
-  document.getElementById("stickItHere").appendChild(phraseDiv);
-  let phraseDOM = document.getElementById(`quote--${index}`);
-  
-  phraseDOM.addEventListener("click", function() {
+
+  let quoteDiv = document.createElement("div"); //<---Here's the key to adding the cards with the click event intact
+  quoteDiv.innerHTML = quoteBlock;
+  document.getElementById("stickItHere").appendChild(quoteDiv);
+  let quoteDOM = document.getElementById(`quote--${index}`);
+  quoteDOM.addEventListener("click", function() {
     console.log("event", event);
     event.currentTarget.classList.add("red");
   });
