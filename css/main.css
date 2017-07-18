@@ -1,5 +1,5 @@
 .flashy {
-  color: blue;
+  color: AntiqueWhite;
 }
 
 .large {
@@ -9,16 +9,7 @@
 
 .bordered {
   border: 4px dotted purple;
-}
-
-.rounded {
-	/*border: 4px dashed red;*/
-  	border-radius: 20px;
-}
-
-#obi-wan {
-  font-family: Helvetica;
-  padding: 5px;
+  border-radius: 20px;
 }
 
 .red {
@@ -31,4 +22,8 @@ pre {
 
 #output {
 	display: inline;
+}
+
+footer {
+  background-color: salmon;
 }

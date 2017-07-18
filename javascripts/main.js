@@ -18,7 +18,7 @@ console.log("articleItems", articleItems);
 function handleClick(MouseEvent) {
   console.log(MouseEvent);
   var elementText = MouseEvent.target.innerHTML;
-  saywhat.innerHTML = "You clicked on " + elementText;
+  saywhat.innerHTML = "hummmm, " + elementText + " you have clicked.";
 }
 
 for (var i = 0; i < articleItems.length; i++) {
@@ -65,27 +65,23 @@ inputArea.addEventListener("keyup", function(event) {
 /*
   another version of anonymous function - change the styles
 */
-var obiwanMessage = document.getElementById("obi-wan");
+var yodaImage = document.getElementById("theYoda");
 
 document.getElementById("add-color")
   .addEventListener("click", function() {
-  obiwanMessage.classList.toggle("flashy");
+  yodaImage.classList.toggle("flashy");
 });
 
 document.getElementById("make-large")
   .addEventListener("click", function() {
-  obiwanMessage.classList.toggle("large");
+  yodaImage.classList.toggle("large");
 });
 
 document.getElementById("add-border")
   .addEventListener("click", function() {
-  obiwanMessage.classList.toggle("bordered");
+  yodaImage.classList.toggle("bordered");
 });
 
-document.getElementById("add-rounding")
-  .addEventListener("click", function() {
-  obiwanMessage.classList.toggle("rounded");
-});
 
 
 /*
