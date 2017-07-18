@@ -22,3 +22,11 @@
 .red {
   color: red;
 }
+
+pre {
+	color:#75C33C;
+}
+
+#output {
+	display: inline;
+}

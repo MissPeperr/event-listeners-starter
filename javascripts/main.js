@@ -7,10 +7,10 @@ var saywhat = document.getElementById("output");
   "article-section" and listen for when the
   user clicks on the element. When that event
   fires, the attached "handleSectionClick"
-  function gets executed.
+  function in invoked.
  */
 
-//getElementsByClassName returns an HTML collection - similar to an array, but no the same
+//getElementsByClassName returns an HTML collection - similar to an array, but not the same
 var articleItems = document.getElementsByClassName("article-section");
 console.log("articleItems", articleItems);
 
@@ -56,8 +56,8 @@ header.addEventListener("mouseout", handleHeaderMouseOut);
 
 var inputArea = document.getElementById("keypress-input");
 
-inputArea.addEventListener("keyup", function (event) {
-  console.log("event",event);
+inputArea.addEventListener("keyup", function(event) {
+  console.log("event", event);
   saywhat.innerHTML = event.target.value;
 });
 
@@ -169,8 +169,8 @@ You were the chosen one!
   version 2 - one function many arrays
 */
 
-var playerOne = [22, 34, 11, 90, 200];
-var playerTwo = [76, 56, 788, 902];
+var jediPlayer = [22, 34, 11, 90, 200];
+var stormPlayer = [76, 56, 788, 902];
 
 
 function changeScores(item, index, whichArray){
@@ -178,11 +178,11 @@ function changeScores(item, index, whichArray){
   
 }
 
-document.getElementById("change1").addEventListener("click", function(){
-  playerOne.forEach(changeScores);
-  console.log("playerOne:", playerOne);
+document.getElementById("changejedi").addEventListener("click", function(){
+  jediPlayer.forEach(changeScores);
+  console.log("Jedi:", jediPlayer);
 });
-document.getElementById("change2").addEventListener("click", function(){
-  playerTwo.forEach(changeScores);
-  console.log("playerTwo:", playerTwo);
+document.getElementById("changestorm").addEventListener("click", function(){
+  stormPlayer.forEach(changeScores);
+  console.log("StormTrooper:", stormPlayer);
 });
