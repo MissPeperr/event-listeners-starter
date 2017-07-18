@@ -1,17 +1,19 @@
-.blue {
+.flashy {
   color: blue;
 }
 
 .large {
   font-size: 2em;
+  text-transform: uppercase;
 }
 
 .bordered {
-  border: 2px dotted purple;
+  border: 4px dotted purple;
 }
 
 .rounded {
-  border-radius: 10px;
+	/*border: 4px dashed red;*/
+  	border-radius: 20px;
 }
 
 #obi-wan {

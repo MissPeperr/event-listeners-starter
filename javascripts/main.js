@@ -65,26 +65,26 @@ inputArea.addEventListener("keyup", function(event) {
 /*
   another version of anonymous function - change the styles
 */
-var obiwan = document.getElementById("obi-wan");
+var obiwanMessage = document.getElementById("obi-wan");
 
 document.getElementById("add-color")
   .addEventListener("click", function() {
-  obiwan.classList.toggle("blue");
+  obiwanMessage.classList.toggle("flashy");
 });
 
 document.getElementById("make-large")
   .addEventListener("click", function() {
-  obiwan.classList.toggle("large");
+  obiwanMessage.classList.toggle("large");
 });
 
 document.getElementById("add-border")
   .addEventListener("click", function() {
-  obiwan.classList.toggle("bordered");
+  obiwanMessage.classList.toggle("bordered");
 });
 
 document.getElementById("add-rounding")
   .addEventListener("click", function() {
-  obiwan.classList.toggle("rounded");
+  obiwanMessage.classList.toggle("rounded");
 });
 
 
