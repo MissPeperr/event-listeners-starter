@@ -1,19 +1,19 @@
 .flashy {
-  color: AntiqueWhite;
+	color: LightSlateGrey;
 }
 
-.large {
-  font-size: 2em;
-  text-transform: uppercase;
+.moreforce {
+	font-size: 2em;
+	text-transform: uppercase;
 }
 
 .bordered {
-  border: 4px dotted purple;
-  border-radius: 20px;
+	border: 6px dotted RebeccaPurple;
+	border-radius: 20px;
 }
 
-.red {
-  color: red;
+.accent {
+  	color: LightSeaGreen;
 }
 
 pre {
@@ -25,5 +25,5 @@ pre {
 }
 
 footer {
-  background-color: salmon;
+	background-color: salmon;
 }

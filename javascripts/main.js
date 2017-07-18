@@ -1,4 +1,4 @@
-var saywhat = document.getElementById("output");
+let saywhat = document.getElementById("output");
 
 /*
   You can get a reference to DOM elements and
@@ -11,18 +11,18 @@ var saywhat = document.getElementById("output");
  */
 
 //getElementsByClassName returns an HTML collection - similar to an array, but not the same
-var articleItems = document.getElementsByClassName("article-section");
-console.log("articleItems", articleItems);
+let listItems = document.getElementsByClassName("list-item");
+console.log("listItems", listItems);
 
 //Ask: does the order matter? When will function be called?
 function handleClick(MouseEvent) {
   console.log(MouseEvent);
-  var elementText = MouseEvent.target.innerHTML;
+  let elementText = MouseEvent.target.innerHTML;
   saywhat.innerHTML = "hummmm, " + elementText + " you have clicked.";
 }
 
-for (var i = 0; i < articleItems.length; i++) {
-  articleItems.item(i).addEventListener("click", handleClick);
+for (var i = 0; i < listItems.length; i++) {
+  listItems.item(i).addEventListener("click", handleClick);
 }
 
 
@@ -34,7 +34,7 @@ for (var i = 0; i < articleItems.length; i++) {
   mouseover, and mouseout, events. Log some message
   to the console for each.
  */
-var header = document.getElementById("page-header");
+let header = document.getElementById("page-header");
 
 function handleHeaderMouseOver(event) {
   saywhat.innerHTML ="The force is strong with this one";
@@ -54,7 +54,7 @@ header.addEventListener("mouseout", handleHeaderMouseOut);
   function reference
  */
 
-var inputArea = document.getElementById("keypress-input");
+let inputArea = document.getElementById("keypress-input");
 
 inputArea.addEventListener("keyup", function(event) {
   console.log("event", event);
@@ -67,14 +67,14 @@ inputArea.addEventListener("keyup", function(event) {
 */
 var yodaImage = document.getElementById("theYoda");
 
-document.getElementById("add-color")
+document.getElementById("change-color")
   .addEventListener("click", function() {
   yodaImage.classList.toggle("flashy");
 });
 
-document.getElementById("make-large")
+document.getElementById("force-lots-of")
   .addEventListener("click", function() {
-  yodaImage.classList.toggle("large");
+  yodaImage.classList.toggle("moreforce");
 });
 
 document.getElementById("add-border")
@@ -104,10 +104,10 @@ document.getElementById("wrapper").addEventListener("click", function(event) {
   }
 
   // Handle the click event on any section
-     // * Notice how when you click on a section, it executes
-       // this code, but *also* the code on above.
-  if (event.target.className === "article-section") {
-    console.log("You clicked on an `article-section` element");
+  // * Notice how when you click on a section, it executes
+  // this code, but *also* the code on above.
+  if (event.target.className === "list-item") {
+    console.log("You clicked on an `list-item` element");
   }
 
   // Inspect the `id` property of the event target
@@ -134,7 +134,7 @@ var quotesArray = [
 ]
 
 
-quotesArray.forEach(function(quote, index) {
+quotesArray.forEach( (quote, index) => {
   let quoteBlock = `<div id="quote--${index}">
                         <h3>"${quote}" - Star Wars</h3>
                       </div>`
@@ -143,9 +143,9 @@ quotesArray.forEach(function(quote, index) {
   quoteDiv.innerHTML = quoteBlock;
   document.getElementById("stickItHere").appendChild(quoteDiv);
   let quoteDOM = document.getElementById(`quote--${index}`);
-  quoteDOM.addEventListener("click", function() {
+  quoteDOM.addEventListener("click", () => {
     console.log("event", event);
-    event.currentTarget.classList.add("red");
+    event.currentTarget.classList.add("accent");
   });
 });
 
@@ -162,7 +162,8 @@ You were the chosen one!
 
 
 /* 
-  version 2 - one function many arrays
+  version 2 - one function used by many arrays
+  pass in the array as a parameter
 */
 
 var jediPlayer = [22, 34, 11, 90, 200];
@@ -174,11 +175,11 @@ function changeScores(item, index, whichArray){
   
 }
 
-document.getElementById("changejedi").addEventListener("click", function(){
+document.getElementById("changejedi").addEventListener("click", () => {
   jediPlayer.forEach(changeScores);
   console.log("Jedi:", jediPlayer);
 });
-document.getElementById("changestorm").addEventListener("click", function(){
+document.getElementById("changestorm").addEventListener("click", () => {
   stormPlayer.forEach(changeScores);
   console.log("StormTrooper:", stormPlayer);
 });
